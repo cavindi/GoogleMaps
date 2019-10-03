@@ -21,6 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".LineActivity"></activity>
         <activity android:name=".Temp_Data" />
         <activity android:name=".LineChartActivity" />
         <activity android:name=".Oxy_Data" />

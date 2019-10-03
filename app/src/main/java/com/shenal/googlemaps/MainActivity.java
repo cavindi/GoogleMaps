@@ -51,6 +51,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button mpLineChartButton = findViewById(R.id.lineChart);
+        mpLineChartButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showMpLineChart();
+            }
+        });
+
+    }
+
+    private void showMpLineChart() {
+        Intent intent = new Intent(this, LineActivity.class);
+        startActivity(intent);
     }
 
     public void showtempdata() {
