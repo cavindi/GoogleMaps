@@ -3,22 +3,11 @@ package com.shenal.googlemaps;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
@@ -32,14 +21,8 @@ public class Oxy_Data extends AppCompatActivity {
     public static TextView xValue;
     public static TextView yValue;
     public static SwipeRefreshLayout pullToRefresh;
-    String data = "";
-    String singleParsed = "";
-    String dataParsed = "";
-    String dataSent = "";
     String date = "";
     String temperature = "";
-    int montharray[] = {};
-    int oxygenvaluearray[] = {};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,24 +41,19 @@ public class Oxy_Data extends AppCompatActivity {
 
         LineChartView lineChartView = findViewById(R.id.oxy_chart);
 
-        int yAxisData[] = {};
-        String[] axisData = {};
-        String[] yaxisData = {};
+        String[] xAxisData = {};
+        String[] yAxisData = {};
         List axisValues = new ArrayList();
         List yAxisValues = new ArrayList();
         Line line = new Line(yAxisValues);
 
-        for (int i = 0; i < axisData.length; i++) {
-            axisValues.add(date);
+        for (int i = 0; i < xAxisData.length; i++) {
+            axisValues.add(i, new AxisValue(i).setLabel(xAxisData[i]));
         }
 
-        for (int i = 0; i < yaxisData.length; i++) {
-            yAxisValues.add(temperature);
-        }
-/*
         for (int i = 0; i < yAxisData.length; i++) {
-            yAxisValues.add(new PointValue(i, yAxisData[i]));
-        }*/
+            yAxisValues.add(i, new AxisValue(i).setLabel(yAxisData[i]));
+        }
 
         List lines = new ArrayList();
         lines.add(line);
