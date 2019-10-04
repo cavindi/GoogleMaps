@@ -22,7 +22,8 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     String dataParsed = "";
     String dataSent = "";
     String date = "";
-    int temperature = 0;
+    String temperature = "";
+    //int temperature = 0;
     int montharray[] = {};
     int oxygenvaluearray[] = {};
 
@@ -48,7 +49,7 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
                 singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
                         "Temperature: " + JO.get("Temperature") + "\n";
                 dataParsed = dataParsed + singleParsed + "\n";
-                temperature = (int) JO.get("Temperature");
+                temperature = (String) JO.get("Temperature");
                 date = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
                 dataSent = dataSent + temperature + "\n";
             }
