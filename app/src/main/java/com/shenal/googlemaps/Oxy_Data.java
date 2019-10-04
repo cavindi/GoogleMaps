@@ -48,11 +48,11 @@ public class Oxy_Data extends AppCompatActivity {
         Line line = new Line(yAxisValues);
 
         for (int i = 0; i < xAxisData.length; i++) {
-            axisValues.add(i, new AxisValue(i).setLabel(xAxisData[i]));
+            axisValues.add(i, new AxisValue(Float.parseFloat(date)).setLabel(xAxisData[i]));
         }
 
         for (int i = 0; i < yAxisData.length; i++) {
-            yAxisValues.add(i, new AxisValue(i).setLabel(yAxisData[i]));
+            yAxisValues.add(i, new AxisValue(Float.parseFloat(temperature)).setLabel(yAxisData[i]));
         }
 
         List lines = new ArrayList();
