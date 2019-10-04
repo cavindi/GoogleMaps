@@ -49,8 +49,9 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
                 singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
                         "Temperature: " + JO.get("Temperature") + "\n";
                 dataParsed = dataParsed + singleParsed + "\n";
-                temperature = (String) JO.get("Temperature");
-                date = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
+                temperature = JO.getString("Temperature");
+                date = JO.getString("Month");
+                //date = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
                 dataSent = dataSent + temperature + "\n";
             }
 
