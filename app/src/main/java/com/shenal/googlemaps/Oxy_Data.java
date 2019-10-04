@@ -29,13 +29,15 @@ import lecho.lib.hellocharts.view.LineChartView;
 
 public class Oxy_Data extends AppCompatActivity {
     public static TextView oxydata;
+    public static TextView xValue;
+    public static TextView yValue;
     public static SwipeRefreshLayout pullToRefresh;
     String data = "";
     String singleParsed = "";
     String dataParsed = "";
     String dataSent = "";
     String date = "";
-    int temperature = 0;
+    String temperature = "";
     int montharray[] = {};
     int oxygenvaluearray[] = {};
 
@@ -44,87 +46,58 @@ public class Oxy_Data extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oxy__data);
         oxydata = findViewById(R.id.data);
+        xValue = (TextView) findViewById(R.id.x);
+        yValue = (TextView) findViewById(R.id.y);
+        date = xValue.getText().toString();
+        temperature = yValue.getText().toString();
+
         pullToRefresh = findViewById(R.id.refresh);
         Oxy_fetch process = new Oxy_fetch();
         process.execute();
         pullToRefresh.setRefreshing(false);
 
-        try {
-            URL url = new URL("https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1Vir4bfLShFvs9JSgUUR4EM6BFlIaiut7jskngEnJy4E&sheet=Sheet1"); //get from which website
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection(); //check connection
-            InputStream inputStream = httpURLConnection.getInputStream(); //this is input
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader((inputStream)));
-            String line = "";
-            while (line != null) {
-                line = bufferedReader.readLine();
-                data = data + line;
-            }
-            data = data.substring(10);//delete first 11 character = sheet1
-            JSONArray JA = new JSONArray(data);
+        LineChartView lineChartView = findViewById(R.id.oxy_chart);
 
-            List yData = new ArrayList();
-            int y[] = new int[]{};
-            String x[] = new String[]{};
-            for(int i = 0; i < JA.length(); i++){
-                JSONObject JO = (JSONObject) JA.get(i);
-                int temp = JO.getInt("Temperature");
-                String month = JO.getString("Month");
-                y[i] = temp;
-                x[i] = month;
-            }
+        int yAxisData[] = {};
+        String[] axisData = {};
+        String[] yaxisData = {};
+        List axisValues = new ArrayList();
+        List yAxisValues = new ArrayList();
+        Line line = new Line(yAxisValues);
 
-            /*for (int i = 0; i < JA.length(); i++) {
-                JSONObject JO = (JSONObject) JA.get(i);
-                singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
-                        "Temperature: " + JO.get("Temperature") + "\n";
-                dataParsed = dataParsed + singleParsed + "\n";
-                temperature = (int) JO.get("Temperature");
-                date = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
-                dataSent = dataSent + temperature + "\n";
-                yData.add(temperature);
-            }*/
-
-            LineChartView lineChartView = findViewById(R.id.oxy_chart);
-
-/*            int yAxisData[] = {};
-            String[] axisData = {};*/
-            List axisValues = new ArrayList();
-            List yAxisValues = new ArrayList();
-            Line line1 = new Line(yAxisValues);
-
-            for (int i = 0; i < x.length; i++) {
-                axisValues.add(i, new AxisValue(i).setLabel(x[i]));
-            }
-            for (int i = 0; i < y.length; i++) {
-                yAxisValues.add(new PointValue(i, y[i]));
-            }
-
-            List lines = new ArrayList();
-            lines.add(line1);
-            LineChartData datas = new LineChartData();
-            datas.setLines(lines);
-            lineChartView.setLineChartData(datas);
-            Axis axis = new Axis();
-            axis.setValues(axisValues);
-            datas.setAxisXBottom(axis);
-            Axis yAxis = new Axis();
-            datas.setAxisYLeft(yAxis);
-            pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    Oxy_fetch process = new Oxy_fetch();
-                    process.execute();
-                    pullToRefresh.setRefreshing(false);
-                }
-            });
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        for (int i = 0; i < axisData.length; i++) {
+            axisValues.add(date);
         }
+
+        for (int i = 0; i < yaxisData.length; i++) {
+            yAxisValues.add(temperature);
+        }
+/*
+        for (int i = 0; i < yAxisData.length; i++) {
+            yAxisValues.add(new PointValue(i, yAxisData[i]));
+        }*/
+
+        List lines = new ArrayList();
+        lines.add(line);
+        LineChartData datas = new LineChartData();
+        datas.setLines(lines);
+        lineChartView.setLineChartData(datas);
+
+        Axis axis = new Axis();
+        axis.setValues(axisValues);
+        datas.setAxisXBottom(axis);
+
+        Axis yAxis = new Axis();
+        datas.setAxisYLeft(yAxis);
+
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Oxy_fetch process = new Oxy_fetch();
+                process.execute();
+                pullToRefresh.setRefreshing(false);
+            }
+        });
 
     }
 }

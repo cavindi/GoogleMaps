@@ -16,8 +16,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     String data = "";
     String singleParsed = "";
@@ -69,5 +67,7 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         Oxy_Data.oxydata.setText(this.dataSent);
+        LineActivity.xValue.setText(this.temperature);
+        LineActivity.yValue.setText(this.date);
     }
 }

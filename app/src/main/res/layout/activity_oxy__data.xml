@@ -5,20 +5,34 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Temp_Data"
-    android:background="@color/grey">
+    android:background="@color/grey"
+    tools:context=".Temp_Data">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginBottom="400dp">
+        android:layout_marginBottom="400dp"
+        android:orientation="vertical">
 
 
         <lecho.lib.hellocharts.view.LineChartView
             android:id="@+id/oxy_chart"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="X value"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/y"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Y Value"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
