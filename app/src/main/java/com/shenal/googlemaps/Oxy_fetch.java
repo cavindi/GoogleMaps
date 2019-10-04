@@ -69,7 +69,7 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         Oxy_Data.oxydata.setText(this.dataSent);
-        LineActivity.xValue.setText(this.temperature);
-        LineActivity.yValue.setText(this.date);
+        Oxy_Data.xValue.setText(this.temperature);
+        Oxy_Data.yValue.setText(this.date);
     }
 }
