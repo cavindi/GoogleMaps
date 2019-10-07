@@ -33,7 +33,7 @@ public class LineActivity extends AppCompatActivity {
         tempString = xValue.getText().toString();
         dateString = yValue.getText().toString();
 
-        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(),"Data Set 1");
+        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data Set 1");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet1);
         LineData lineData = new LineData(dataSets);
@@ -45,8 +45,9 @@ public class LineActivity extends AppCompatActivity {
         ArrayList<Entry> dataVals = new ArrayList<>();
         temperature = Float.parseFloat(tempString);
         date = Float.parseFloat(tempString);
-        dataVals.add(new Entry(temperature, date));
-
+        for (int i = 0; i < dataVals.size(); i++) {
+            dataVals.add(new Entry(temperature, date));
+        }
         return dataVals;
     }
 }

@@ -15,6 +15,8 @@ import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.view.LineChartView;
 
 public class LineChartActivity extends AppCompatActivity {
+    public static String temperature;
+    public static String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

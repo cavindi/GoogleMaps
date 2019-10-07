@@ -42,19 +42,25 @@ public class Oxy_Data extends AppCompatActivity {
         LineChartView lineChartView = findViewById(R.id.oxy_chart);
 
         String[] xAxisData = {};
-        String[] yAxisData = {};
+        //String[] yAxisData = {};
+
+        String[] axisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
+                "Oct", "Nov", "Dec"};
+
+        int[] yAxisData = {};
+
         List axisValues = new ArrayList();
         List yAxisValues = new ArrayList();
         Line line = new Line(yAxisValues);
 
-        for (int i = 0; i < xAxisData.length; i++) {
-            axisValues.add(i, new AxisValue(Float.parseFloat(date)).setLabel(xAxisData[i]));
+        for (int i = 0; i < axisData.length; i++) {
+            axisValues.add(i, new AxisValue(i).setLabel(axisData[i]));
         }
 
         for (int i = 0; i < yAxisData.length; i++) {
-            yAxisValues.add(i, new AxisValue(Float.parseFloat(temperature)).setLabel(yAxisData[i]));
+            yAxisValues.add(new PointValue(i, yAxisData[i]));
         }
-
+        
         List lines = new ArrayList();
         lines.add(line);
         LineChartData datas = new LineChartData();
