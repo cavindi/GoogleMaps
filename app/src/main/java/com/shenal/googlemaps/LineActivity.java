@@ -47,6 +47,10 @@ public class LineActivity extends AppCompatActivity {
             //Entry will only accept float values
             //(new Entry(x, y))
             dataVals.add(new Entry(fDate, fTemp));
+            dataVals.add(new Entry(1, 10));
+            dataVals.add(new Entry(3, 50));
+            dataVals.add(new Entry(4, 24));
+            dataVals.add(new Entry(5, 16));
         }
         return dataVals;
     }
