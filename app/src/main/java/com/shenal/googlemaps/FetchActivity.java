@@ -17,6 +17,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+//this is an activity, therefore data from this activity can be passed to another activity
+//however, data cannot be passed from a non-activity class to an activity class
+//Oxy_fetch and Temp_fetch are non-activity classes
+//you can set text values from non-activity classes, but you cannot pass variables, AS FAR AS I KNOW
 public class FetchActivity extends AppCompatActivity {
     String data = "";
     String singleParsed = "";
@@ -53,7 +57,11 @@ public class FetchActivity extends AppCompatActivity {
                 //date = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
                 dataSent = dataSent + temperature + "\n";
 
-                sendData();
+                //passing the temperature and date to LineActivity
+                Intent intent = new Intent(this, LineActivity.class);
+                intent.putExtra("temperature", temperature);
+                intent.putExtra("date", date);
+                startActivity(intent);
             }
 
         } catch (MalformedURLException e) {
@@ -63,12 +71,5 @@ public class FetchActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    public void sendData(){
-        Intent intent = new Intent(this, LineActivity.class);
-        intent.putExtra("temperature", temperature);
-        intent.putExtra("date", date);
-        startActivity(intent);
     }
 }
