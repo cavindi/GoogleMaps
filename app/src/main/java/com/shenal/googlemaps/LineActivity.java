@@ -1,5 +1,6 @@
 package com.shenal.googlemaps;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -39,9 +40,8 @@ public class LineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line);
-
+        //getDataFromSheet();
         lineChart = (LineChart) findViewById(R.id.line_chart);
-        getDataFromSheet();
 
         LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data From Sensor 1");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -84,9 +84,14 @@ public class LineActivity extends AppCompatActivity {
     }
 
     private ArrayList<Entry> dataValues1() {
+        Intent intent = getIntent();//intent
+        String sDate = intent.getStringExtra("date");
+        String sTemp = intent.getStringExtra("temperature");
+
         ArrayList<Entry> dataVals = new ArrayList<>();
-        fDate = Float.parseFloat(date);
-        fTemp = Float.parseFloat(temperature);
+
+        fDate = Float.parseFloat(sDate);
+        fTemp = Float.parseFloat(sTemp);
         for (int i = 0; i < dataVals.size(); i++) {
             /*dataVals.add(new Entry(1, 0));
             dataVals.add(new Entry(2, 12));

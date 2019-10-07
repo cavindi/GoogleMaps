@@ -22,6 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Y Value" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ytfy" />
     </com.github.mikephil.charting.charts.LineChart>
 
 </RelativeLayout>

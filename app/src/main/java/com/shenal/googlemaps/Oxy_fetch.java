@@ -71,9 +71,6 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
         Oxy_Data.oxydata.setText(this.dataSent);
         LineChartActivity.temperature.equals(this.temperature);
         LineChartActivity.date.equals(this.date);
-        LineActivity.sTemp.equals(this.temperature);
-        LineActivity.sDate.equals(this.date);
-
         /*Intent intent = new Intent(this, LineActivity.class);
         intent.putExtra("temperature", temperature);
         startActivity(intent);*/
