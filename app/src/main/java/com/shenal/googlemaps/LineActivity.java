@@ -11,18 +11,29 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class LineActivity extends AppCompatActivity {
-    float date = 0;
-    float temperature = 0;
-    String dateString;
-    String tempString;
     LineChart lineChart;
-    public static TextView xValue;
-    public static TextView yValue;
-    public static String sTemp;
-    public static String sDate;
+    String data = "";
+    String singleParsed = "";
+    String dataParsed = "";
+    String dataSent = "";
+    String date = "";
+    String temperature = "";
+    float fDate;
+    float fTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +41,9 @@ public class LineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_line);
 
         lineChart = (LineChart) findViewById(R.id.line_chart);
-        xValue = (TextView) findViewById(R.id.x);
-        yValue = (TextView) findViewById(R.id.y);
-        tempString = xValue.getText().toString();
-        dateString = yValue.getText().toString();
+        getDataFromSheet();
 
-        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data Set 1");
+        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data From Sensor 1");
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet1);
         LineData lineData = new LineData(dataSets);
@@ -43,12 +51,47 @@ public class LineActivity extends AppCompatActivity {
         lineChart.invalidate();
     }
 
+    public void getDataFromSheet() {
+        try {
+            URL url = new URL("https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1Vir4bfLShFvs9JSgUUR4EM6BFlIaiut7jskngEnJy4E&sheet=Sheet1"); //get from which website
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection(); //check connection
+            InputStream inputStream = httpURLConnection.getInputStream(); //this is input
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader((inputStream)));
+            String line = "";
+            while (line != null) {
+                line = bufferedReader.readLine();
+                data = data + line;
+            }
+            data = data.substring(10);//delete first 11 character = sheet1
+            JSONArray JA = new JSONArray(data);
+            for (int i = 0; i < JA.length(); i++) {
+                JSONObject JO = (JSONObject) JA.get(i);
+                singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
+                        "Temperature: " + JO.get("Temperature") + "\n";
+                dataParsed = dataParsed + singleParsed + "\n";
+                temperature = JO.getString("Temperature");
+                date = JO.getString("Month");
+                dataSent = dataSent + temperature + "\n";
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     private ArrayList<Entry> dataValues1() {
         ArrayList<Entry> dataVals = new ArrayList<>();
-        temperature = Float.parseFloat(sTemp);
-        date = Float.parseFloat(sDate);
+        fDate = Float.parseFloat(date);
+        fTemp = Float.parseFloat(temperature);
         for (int i = 0; i < dataVals.size(); i++) {
-            dataVals.add(new Entry(temperature, date));
+            /*dataVals.add(new Entry(1, 0));
+            dataVals.add(new Entry(2, 12));
+            dataVals.add(new Entry(3, 16));*/
+            dataVals.add(new Entry(fDate, fTemp));
         }
         return dataVals;
     }
