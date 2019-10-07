@@ -21,6 +21,8 @@ public class LineActivity extends AppCompatActivity {
     LineChart lineChart;
     public static TextView xValue;
     public static TextView yValue;
+    public static String sTemp;
+    public static String sDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +45,8 @@ public class LineActivity extends AppCompatActivity {
 
     private ArrayList<Entry> dataValues1() {
         ArrayList<Entry> dataVals = new ArrayList<>();
-        temperature = Float.parseFloat(tempString);
-        date = Float.parseFloat(tempString);
+        temperature = Float.parseFloat(sTemp);
+        date = Float.parseFloat(sDate);
         for (int i = 0; i < dataVals.size(); i++) {
             dataVals.add(new Entry(temperature, date));
         }

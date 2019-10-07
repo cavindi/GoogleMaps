@@ -60,7 +60,7 @@ public class Oxy_Data extends AppCompatActivity {
         for (int i = 0; i < yAxisData.length; i++) {
             yAxisValues.add(new PointValue(i, yAxisData[i]));
         }
-        
+
         List lines = new ArrayList();
         lines.add(line);
         LineChartData datas = new LineChartData();
