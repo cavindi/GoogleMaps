@@ -54,7 +54,6 @@ public class FetchActivity extends AppCompatActivity {
                 date = String.valueOf(JO.get("Day"));
                 dataSent = dataSent + temperature + "\n";
 
-
                 Intent intent = new Intent(this, LineActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("temperature",temperature);
