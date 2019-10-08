@@ -46,21 +46,20 @@ public class FetchActivity extends AppCompatActivity {
             JSONArray JA = new JSONArray(data);
             for (int i = 0; i < JA.length(); i++) {
                 JSONObject JO = (JSONObject) JA.get(i);
-                //montharray[i] = (int) JO.get("Month");
-                //tempValueArray[i] = (int) JO.get("Temperature");
 
                 singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
                         "Temperature: " + JO.get("Temperature") + "\n";
                 dataParsed = dataParsed + singleParsed + "\n";
-                temperature = JO.getString("Temperature");
-                date = JO.getString("Month");
-                //date = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
+                temperature = String.valueOf(JO.get("Temperature"));
+                date = String.valueOf(JO.get("Day"));
                 dataSent = dataSent + temperature + "\n";
 
-                //passing the temperature and date to LineActivity
+
                 Intent intent = new Intent(this, LineActivity.class);
-                intent.putExtra("temperature", temperature);
-                intent.putExtra("date", date);
+                Bundle extras = new Bundle();
+                extras.putString("temperature",temperature);
+                extras.putString("date",date);
+                intent.putExtras(extras);
                 startActivity(intent);
             }
 
