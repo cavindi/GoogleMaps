@@ -16,11 +16,12 @@ import java.net.URL;
 public class HttpGetRequest extends AsyncTask<Void, Void, String> {
     String temperature;
     String date;
+    public static String result = null;
 
     @Override
     protected String doInBackground(Void... voids) {
-        String stringUrl = "https://script.google.com/macros/s/AKfycbys4tKmBSIB7Eqf-je0PYmHGTgvfnaCPbLmvCo_Pkt9LC84Yg/exec";
-        String result = null;
+        String stringUrl = "https://script.googleusercontent.com/macros/echo?user_content_key=379PgeliL2VVP4hWBeg1rhBgPj3zn8QKNDILaoWampSQ77aPFIosWgXpNzR6184ARZgiQIAKF-dabDCzY_cBKfmdArsZyp1POJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1GhPSVukpSQTydEwAEXFXgt_wltjJcH3XHUaaPC1fv5o9XyvOto09QuWI89K6KjOu0SP2F-BdwUdEm9OpiitxukVyy6QwQNhn-YfRm6BvCFE71MHL4U9NNWSqFVhNwcYroR1j2UCw3q5y7FLqOV0Tk27B8Rh4QJTQ&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva";
+
         String inputLine;
 
         try {
@@ -70,5 +71,6 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+        LineActivity.test.equals(result);
     }
 }

@@ -28,7 +28,7 @@ public class LineChartActivity extends AppCompatActivity {
         String[] axisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
                 "Oct", "Nov", "Dec"};
 
-        int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 10, 90, 18};
+        int[] yAxisData = {50, 20, 15, 30, 20, 60, 15, 40, 45, 28, 90, 18, 32, 33,35,45,46};
 
         List yAxisValues = new ArrayList();
         List axisValues = new ArrayList();

@@ -32,6 +32,7 @@ public class LineActivity extends AppCompatActivity {
     String data = "";
     String date = "";
     String temperature = "";
+    public static String test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,40 +53,12 @@ public class LineActivity extends AppCompatActivity {
     private ArrayList<Entry> dataValues1() {
         ArrayList<Entry> dataVals = new ArrayList<>();
 
-        try {
-            //CHANGE THE SCRIPT URL
-            URL url = new URL("https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1Vir4bfLShFvs9JSgUUR4EM6BFlIaiut7jskngEnJy4E&sheet=Sheet1"); //get from which website
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection(); //check connection
-            InputStream inputStream = httpURLConnection.getInputStream(); //this is input
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader((inputStream)));
-            String line = "";
-            while (line != null) {
-                line = bufferedReader.readLine();
-                data = data + line;
-            }
-            data = data.substring(10);//delete first 11 character = sheet1
-            JSONArray JA = new JSONArray(data);
-            for (int i = 0; i < JA.length(); i++) {
-                JSONObject JO = (JSONObject) JA.get(i);
-                date = JO.get("Date").toString();
-                temperature = JO.get("Temperature").toString();
-                fDate = Float.valueOf(date);
-                fTemp = Float.valueOf(temperature);
+        fDate = Float.valueOf(date);
+        fTemp = Float.valueOf(temperature);
 
-                for (int j = 0; j < dataVals.size(); j++) {
-                    dataVals.add(new Entry(fDate, fTemp));
-                }
-            }
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+        for (int j = 0; j < dataVals.size(); j++) {
+            dataVals.add(new Entry(fDate, fTemp));
         }
-
-
         return dataVals;
     }
 }
