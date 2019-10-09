@@ -1,8 +1,6 @@
 package com.shenal.googlemaps;
 
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,14 +21,11 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     String dataSent = "";
     String date = "";
     String temperature = "";
-    //int temperature = 0;
-    int montharray[] = {};
-    int oxygenvaluearray[] = {};
 
     @Override
     protected Void doInBackground(Void... voids) {
         try {
-            URL url = new URL("https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id=1Vir4bfLShFvs9JSgUUR4EM6BFlIaiut7jskngEnJy4E&sheet=Sheet1"); //get from which website
+            URL url = new URL("https://script.googleusercontent.com/macros/echo?user_content_key=379PgeliL2VVP4hWBeg1rhBgPj3zn8QKNDILaoWampSQ77aPFIosWgXpNzR6184ARZgiQIAKF-dabDCzY_cBKfmdArsZyp1POJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMWojr9NvTBuBLhyHCd5hHa1GhPSVukpSQTydEwAEXFXgt_wltjJcH3XHUaaPC1fv5o9XyvOto09QuWI89K6KjOu0SP2F-BdwUdEm9OpiitxukVyy6QwQNhn-YfRm6BvCFE71MHL4U9NNWSqFVhNwcYroR1j2UCw3q5y7FLqOV0Tk27B8Rh4QJTQ&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva"); //get from which website
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection(); //check connection
             InputStream inputStream = httpURLConnection.getInputStream(); //this is input
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader((inputStream)));
@@ -43,9 +38,6 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
             JSONArray JA = new JSONArray(data);
             for (int i = 0; i < JA.length(); i++) {
                 JSONObject JO = (JSONObject) JA.get(i);
-                //montharray[i] = (int) JO.get("Month");
-                //tempValueArray[i] = (int) JO.get("Temperature");
-
                 singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
                         "Temperature: " + JO.get("Temperature") + "\n";
                 dataParsed = dataParsed + singleParsed + "\n";
@@ -69,10 +61,5 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         Oxy_Data.oxydata.setText(this.dataSent);
-        LineChartActivity.temperature.equals(this.temperature);
-        LineChartActivity.date.equals(this.date);
-        /*Intent intent = new Intent(this, LineActivity.class);
-        intent.putExtra("temperature", temperature);
-        startActivity(intent);*/
     }
 }
