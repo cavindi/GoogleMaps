@@ -97,6 +97,6 @@ public class FirebaseActivity extends AppCompatActivity {
         lineChart.clear();
         lineChart.setData(lineData);
         lineChart.invalidate();
-        
+
     }
 }

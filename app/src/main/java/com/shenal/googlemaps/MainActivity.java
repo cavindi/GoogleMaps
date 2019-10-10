@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showMpLineChart() {
-        Intent intent = new Intent(this, LineActivity.class);
+        Intent intent = new Intent(this, FirebaseActivity.class);
         startActivity(intent);
     }
 
