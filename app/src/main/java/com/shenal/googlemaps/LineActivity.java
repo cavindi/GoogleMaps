@@ -1,6 +1,8 @@
 package com.shenal.googlemaps;
 
 import android.os.Bundle;
+import android.widget.ListView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
@@ -12,6 +14,8 @@ import java.util.ArrayList;
 
 public class LineActivity extends AppCompatActivity {
     LineChart lineChart;
+    public static ListView listTemperature;
+    public static ListView listDate;
     String date;
     String temperature;
     float fDate;
@@ -24,8 +28,8 @@ public class LineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_line);
 
         lineChart = (LineChart) findViewById(R.id.line_chart);
-        date = findViewById(R.id.date).toString();
-        temperature = findViewById(R.id.temperature).toString();
+        listTemperature = (ListView) findViewById(R.id.listTemperature);
+        listDate = (ListView) findViewById(R.id.listDate);
 
         //calling dataValues1() method and assigning the data to the LineDataSet
         LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data From Sensor 1");
