@@ -10,11 +10,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     String data = "";
@@ -23,9 +21,6 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     String dataSent = "";
     String date = "";
     String temperature = "";
-    ArrayList<String> listTemperature = new ArrayList<String>();
-    ArrayList<String> listDate = new ArrayList<String>();
-
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -43,13 +38,13 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
             JSONArray JA = new JSONArray(data);
             for (int i = 0; i < JA.length(); i++) {
                 JSONObject JO = (JSONObject) JA.get(i);
-                /*singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
+                singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
                         "Temperature: " + JO.get("Temperature") + "\n";
-                dataParsed = dataParsed + singleParsed + "\n";*/
+                dataParsed = dataParsed + singleParsed + "\n";
                 temperature = (String) JO.get("Temperature");
                 date = (String) JO.get("Month");
-                listTemperature.add(temperature);
-                listDate.add(date);
+                //date = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
+                dataSent = dataSent + temperature + "\n";
             }
 
         } catch (MalformedURLException e) {
@@ -66,5 +61,7 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         Oxy_Data.oxydata.setText(this.dataSent);
+        LineActivity.date.equals(this.date);
+        LineActivity.temperature.equals(this.temperature);
     }
 }

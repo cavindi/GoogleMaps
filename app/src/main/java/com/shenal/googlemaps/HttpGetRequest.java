@@ -71,6 +71,6 @@ public class HttpGetRequest extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        LineActivity.test.equals(result);
+
     }
 }

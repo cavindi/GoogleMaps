@@ -47,7 +47,7 @@ public class Oxy_Data extends AppCompatActivity {
         String[] axisData = {"Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept",
                 "Oct", "Nov", "Dec"};
 
-        int[] yAxisData = {};
+        int[] yAxisData = {1, 2, 3, 6, 9, 8, 2};
 
         List axisValues = new ArrayList();
         List yAxisValues = new ArrayList();
