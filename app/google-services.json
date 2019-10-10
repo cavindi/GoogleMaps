@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "705634833979",
+    "firebase_url": "https://envodata-f7952.firebaseio.com",
+    "project_id": "envodata-f7952",
+    "storage_bucket": "envodata-f7952.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705634833979:android:2e372c168c483165692e1e",
+        "android_client_info": {
+          "package_name": "com.shenal.googlemaps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705634833979-14280k90kr7t51m3d5a1e2dscutsv1a9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shenal.googlemaps",
+            "certificate_hash": "479898e39e7d13219864a4891540b7e72abcde89"
+          }
+        },
+        {
+          "client_id": "705634833979-9i70si3i4hvu39f4cevdj79v1kj7skic.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3ozUDDH9F2qwRldlwTtWxFCsIk1-WrRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705634833979-9i70si3i4hvu39f4cevdj79v1kj7skic.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
