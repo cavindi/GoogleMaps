@@ -10,21 +10,7 @@
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
-        android:layout_height="500dp">
+        android:layout_height="500dp"></com.github.mikephil.charting.charts.LineChart>
 
-
-    </com.github.mikephil.charting.charts.LineChart>
-
-    <ListView
-        android:id="@+id/listTemperature"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:visibility="invisible" />
-
-    <ListView
-        android:id="@+id/listDate"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:visibility="invisible" />
 
 </RelativeLayout>
