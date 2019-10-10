@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Date" />
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/yValue"
@@ -21,8 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Temperature" />
+        android:inputType="textPersonName"/>
 
     <Button
         android:id="@+id/btnSave"

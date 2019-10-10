@@ -28,8 +28,6 @@ public class LineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_line);
 
         lineChart = (LineChart) findViewById(R.id.line_chart);
-        listTemperature = (ListView) findViewById(R.id.listTemperature);
-        listDate = (ListView) findViewById(R.id.listDate);
 
         //calling dataValues1() method and assigning the data to the LineDataSet
         LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data From Sensor 1");
