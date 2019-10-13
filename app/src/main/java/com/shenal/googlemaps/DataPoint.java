@@ -1,21 +1,30 @@
 package com.shenal.googlemaps;
 
 public class DataPoint {
-    int xValue, yValue;
+    int day;
+    int temperature;
 
-    public DataPoint(int xValue, int yValue) {
-        this.xValue = xValue;
-        this.yValue = yValue;
+    public DataPoint(int day, int temperature) {
+        this.day = day;
+        this.temperature = temperature;
     }
 
     public DataPoint() {
     }
 
-    public int getxValue() {
-        return xValue;
+    public int getDay() {
+        return day;
     }
 
-    public int getyValue() {
-        return yValue;
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
     }
 }

@@ -42,11 +42,12 @@ public class FirebaseActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         lineChart = findViewById(R.id.line_chart);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("ChartValues");
-        insertData();
+        databaseReference = firebaseDatabase.getReference("masterSheet");
+        retrieveData();
+        // insertData();
     }
 
-    private void insertData() {
+   /* private void insertData() {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,12 +57,11 @@ public class FirebaseActivity extends AppCompatActivity {
 
                 DataPoint dataPoint = new DataPoint(x, y);
                 databaseReference.child(id).setValue(dataPoint);
-
                 retrieveData();
 
             }
         });
-    }
+    }*/
 
     private void retrieveData() {
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -72,7 +72,7 @@ public class FirebaseActivity extends AppCompatActivity {
                 if (dataSnapshot.hasChildren()) {
                     for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
                         DataPoint dataPoint = myDataSnapshot.getValue(DataPoint.class);
-                        dataVals.add(new Entry(dataPoint.getxValue(), dataPoint.getyValue()));
+                        dataVals.add(new Entry(dataPoint.getDay(), dataPoint.getTemperature()));
                     }
                     showChart(dataVals);
                 } else {
