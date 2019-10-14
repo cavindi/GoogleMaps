@@ -18,10 +18,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".FirebaseActivity"></activity>
-        <activity android:name=".FetchActivity" />
-        <activity android:name=".LineActivity" />
         <activity android:name=".Temp_Data" />
-        <activity android:name=".LineChartActivity" />
         <activity android:name=".Oxy_Data" />
         <activity android:name=".Oxy_fetch" />
         <activity android:name=".MainActivity">

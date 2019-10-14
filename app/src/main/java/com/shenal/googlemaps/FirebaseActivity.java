@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -23,8 +22,6 @@ import java.util.ArrayList;
 
 public class FirebaseActivity extends AppCompatActivity {
 
-    EditText xValue, yValue;
-    Button btnSave;
     LineChart lineChart;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -37,31 +34,11 @@ public class FirebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase);
 
-        xValue = findViewById(R.id.xValue);
-        yValue = findViewById(R.id.yValue);
-        btnSave = findViewById(R.id.btnSave);
         lineChart = findViewById(R.id.line_chart);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("masterSheet");
         retrieveData();
-        // insertData();
     }
-
-   /* private void insertData() {
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String id = databaseReference.push().getKey();
-                int x = Integer.parseInt(xValue.getText().toString());
-                int y = Integer.parseInt(yValue.getText().toString());
-
-                DataPoint dataPoint = new DataPoint(x, y);
-                databaseReference.child(id).setValue(dataPoint);
-                retrieveData();
-
-            }
-        });
-    }*/
 
     private void retrieveData() {
         databaseReference.addValueEventListener(new ValueEventListener() {
