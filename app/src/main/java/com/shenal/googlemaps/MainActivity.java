@@ -21,12 +21,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnLineChart = findViewById(R.id.btnLineChart);
-        btnLineChart.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                navigateToLineChart();
-            }
-        });
 
         Button tempbutton = findViewById(R.id.temperature);
         tempbutton.setOnClickListener(new View.OnClickListener() {
@@ -69,11 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToMap() {
         Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
-    }
-
-    public void navigateToLineChart() {
-        Intent intent = new Intent(this, LineChartActivity.class);
         startActivity(intent);
     }
 

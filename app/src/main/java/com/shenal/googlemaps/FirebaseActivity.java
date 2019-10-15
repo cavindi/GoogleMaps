@@ -24,7 +24,7 @@ public class FirebaseActivity extends AppCompatActivity {
 
     LineChart lineChart;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference;//database
     LineDataSet lineDataSet = new LineDataSet(null, null);
     ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
     LineData lineData;
@@ -36,7 +36,7 @@ public class FirebaseActivity extends AppCompatActivity {
 
         lineChart = findViewById(R.id.line_chart);
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("masterSheet");
+        databaseReference = firebaseDatabase.getReference("masterSheet");//
         retrieveData();
     }
 
@@ -53,7 +53,7 @@ public class FirebaseActivity extends AppCompatActivity {
                     }
                     showChart(dataVals);
                 } else {
-                    lineChart.clear();
+                    //lineChart.clear();
                     lineChart.invalidate();
                 }
             }
