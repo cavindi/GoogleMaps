@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FirebaseActivity"></activity>
+        <activity android:name=".Tab2Fragment"></activity>
+        <activity android:name=".Tab1Fragment" />
+        <activity android:name=".FirebaseActivity" />
         <activity android:name=".Temp_Data" />
         <activity android:name=".Oxy_Data" />
         <activity android:name=".Oxy_fetch" />
