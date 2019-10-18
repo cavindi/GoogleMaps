@@ -10,38 +10,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton mapBtn, lineChartBtn;
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        mapBtn = findViewById(R.id.mapButton);
-        lineChartBtn = findViewById(R.id.lineChartButton);
-
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        ImageButton btnMap = findViewById(R.id.mapButton);
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 goToMap();
-
             }
         });
 
-        lineChartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        ImageButton btnLineChart = findViewById(R.id.lineChartButton);
+        btnLineChart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 goToLineChart();
-
             }
         });
     }
 
-    public void goToMap(){
+
+    public void goToMap() {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
 
-    public void goToLineChart(){
+    public void goToLineChart() {
         Intent intent = new Intent(this, FirebaseActivity.class);
         startActivity(intent);
     }
