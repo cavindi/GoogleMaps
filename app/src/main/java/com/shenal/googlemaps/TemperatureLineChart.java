@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DOLineChartActivity extends AppCompatActivity {
+public class TemperatureLineChart extends AppCompatActivity {
 
     LineChart lineChart;
     FirebaseDatabase firebaseDatabase;
@@ -32,7 +32,7 @@ public class DOLineChartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doline_chart);
+        setContentView(R.layout.activity_temperature_line_chart);
 
         lineChart = findViewById(R.id.line_chart);
         spinner = findViewById(R.id.spinner);
@@ -50,8 +50,8 @@ public class DOLineChartActivity extends AppCompatActivity {
                 ArrayList<Entry> dataVals = new ArrayList<Entry>();
                 if (dataSnapshot.hasChildren()) {
                     for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
-                        DODataPoint doDataPoint = myDataSnapshot.getValue(DODataPoint.class);
-                        dataVals.add(new Entry(doDataPoint.getDay(), doDataPoint.getDissolvedOxygen()));
+                        DataPoint dataPoint = myDataSnapshot.getValue(DataPoint.class);
+                        dataVals.add(new Entry(dataPoint.getDay(), dataPoint.getTemperature()));
                     }
                     showChart(dataVals);
                 } else {
@@ -68,7 +68,7 @@ public class DOLineChartActivity extends AppCompatActivity {
 
     private void showChart(ArrayList<Entry> dataVals) {
         lineDataSet.setValues(dataVals);
-        lineDataSet.setLabel("Dissolved Oxygen");
+        lineDataSet.setLabel("Data Set 1");
         iLineDataSets.clear();
         iLineDataSets.add(lineDataSet);
         lineData = new LineData(iLineDataSets);

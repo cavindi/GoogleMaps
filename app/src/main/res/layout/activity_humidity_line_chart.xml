@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirebaseActivity">
+    tools:context=".HumidityLineChartActivity">
 
     <Spinner
         android:id="@+id/spinner"
@@ -14,7 +14,6 @@
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="250dp"></com.github.mikephil.charting.charts.LineChart>
+        android:layout_height="match_parent"></com.github.mikephil.charting.charts.LineChart>
 
 </RelativeLayout>

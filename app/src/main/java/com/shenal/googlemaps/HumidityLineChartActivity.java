@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -21,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class FirebaseActivity extends AppCompatActivity {
+public class HumidityLineChartActivity extends AppCompatActivity {
 
     LineChart lineChart;
     FirebaseDatabase firebaseDatabase;
@@ -34,7 +32,7 @@ public class FirebaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_firebase);
+        setContentView(R.layout.activity_humidity_line_chart);
 
         lineChart = findViewById(R.id.line_chart);
         spinner = findViewById(R.id.spinner);
@@ -52,8 +50,8 @@ public class FirebaseActivity extends AppCompatActivity {
                 ArrayList<Entry> dataVals = new ArrayList<Entry>();
                 if (dataSnapshot.hasChildren()) {
                     for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
-                        DataPoint dataPoint = myDataSnapshot.getValue(DataPoint.class);
-                        dataVals.add(new Entry(dataPoint.getDay(), dataPoint.getTemperature()));
+                        HumidityDataPoint doDataPoint = myDataSnapshot.getValue(HumidityDataPoint.class);
+                        dataVals.add(new Entry(doDataPoint.getDay(), doDataPoint.getHumidity()));
                     }
                     showChart(dataVals);
                 } else {
@@ -70,7 +68,7 @@ public class FirebaseActivity extends AppCompatActivity {
 
     private void showChart(ArrayList<Entry> dataVals) {
         lineDataSet.setValues(dataVals);
-        lineDataSet.setLabel("Data Set 1");
+        lineDataSet.setLabel("Humidity");
         iLineDataSets.clear();
         iLineDataSets.add(lineDataSet);
         lineData = new LineData(iLineDataSets);
@@ -80,3 +78,4 @@ public class FirebaseActivity extends AppCompatActivity {
 
     }
 }
+

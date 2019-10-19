@@ -3,9 +3,9 @@ package com.shenal.googlemaps;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,24 +15,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton btnMap = findViewById(R.id.mapButton);
+        Button btnMap = findViewById(R.id.btnMap);
         btnMap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goToMap();
             }
         });
 
-        ImageButton btnLineChart = findViewById(R.id.lineChartButton);
-        btnLineChart.setOnClickListener(new View.OnClickListener() {
+        Button btnTemperatureLineChart = findViewById(R.id.btnTemperatureLineChart);
+        btnTemperatureLineChart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                goToLineChart();
+                goToTemperatureLineChart();
             }
         });
 
-        ImageButton btnDOLineChart = findViewById(R.id.DOLineChartButton);
+        Button btnDOLineChart = findViewById(R.id.btnDoLineChart);
         btnDOLineChart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goToDOLineChart();
+            }
+        });
+
+        Button btnHumidityLineChart = findViewById(R.id.btnHumidityLineChart);
+        btnHumidityLineChart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goToHumidityLineChart();
             }
         });
     }
@@ -43,13 +50,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToLineChart() {
-        Intent intent = new Intent(this, FirebaseActivity.class);
+    public void goToTemperatureLineChart() {
+        Intent intent = new Intent(this, TemperatureLineChart.class);
         startActivity(intent);
     }
 
     public void goToDOLineChart() {
         Intent intent = new Intent(this, DOLineChartActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToHumidityLineChart() {
+        Intent intent = new Intent(this, HumidityLineChartActivity.class);
         startActivity(intent);
     }
 
