@@ -28,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
                 goToLineChart();
             }
         });
+
+        ImageButton btnDOLineChart = findViewById(R.id.DOLineChartButton);
+        btnDOLineChart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goToDOLineChart();
+            }
+        });
     }
 
 
@@ -38,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToLineChart() {
         Intent intent = new Intent(this, FirebaseActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToDOLineChart() {
+        Intent intent = new Intent(this, DOLineChartActivity.class);
         startActivity(intent);
     }
 
