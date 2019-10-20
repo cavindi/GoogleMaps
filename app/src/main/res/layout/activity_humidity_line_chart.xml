@@ -7,18 +7,6 @@
     android:layout_height="wrap_content"
     tools:context=".HumidityLineChartActivity">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/line_chart"
-        android:layout_width="405dp"
-        android:layout_height="600dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnList"
-        app:layout_constraintVertical_bias="1.0"></com.github.mikephil.charting.charts.LineChart>
-
     <Button
         android:id="@+id/btnList"
         android:layout_width="0dp"
@@ -27,5 +15,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/line_chart"
+                android:layout_width="405dp"
+                android:layout_height="600dp"
+                android:layout_marginTop="76dp"></com.github.mikephil.charting.charts.LineChart>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
