@@ -18,10 +18,6 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     String data = "";
     String singleParsed = "";
     String dataParsed = "";
-    String dataSent = "";
-    String date = "";
-    String temperature = "";
-
     @Override
     protected Void doInBackground(Void... voids) {
         try {
@@ -39,12 +35,8 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
             for (int i = 0; i < JA.length(); i++) {
                 JSONObject JO = (JSONObject) JA.get(i);
                 singleParsed = "Day: " + JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year") + "\n" +
-                        "Temperature: " + JO.get("Temperature") + "\n";
+                        "Dissolved Oxygen: " + JO.get("DissolvedOxygen") + "\n";
                 dataParsed = dataParsed + singleParsed + "\n";
-                temperature = (String) JO.get("Temperature");
-                date = (String) JO.get("Month");
-                //day = JO.get("Day") + "/" + JO.get("Month") + "/" + JO.get("Year");
-                dataSent = dataSent + temperature + "\n";
             }
 
         } catch (MalformedURLException e) {
@@ -60,6 +52,6 @@ public class Oxy_fetch extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Oxy_Data.oxydata.setText(this.dataSent);
+        Oxy_Data.oxydata.setText(this.dataParsed);
     }
 }

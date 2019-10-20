@@ -3,7 +3,10 @@ package com.shenal.googlemaps;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -27,20 +30,29 @@ public class DOLineChartActivity extends AppCompatActivity {
     LineDataSet lineDataSet = new LineDataSet(null, null);
     ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
     LineData lineData;
-    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doline_chart);
-
         lineChart = findViewById(R.id.line_chart);
-        spinner = findViewById(R.id.spinner);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("masterSheet");
 
         retrieveData();
+
+        Button btnList = findViewById(R.id.btnList);
+        btnList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goToList();
+            }
+        });
+    }
+
+    private void goToList() {
+        Intent intent = new Intent(this, Oxy_Data.class);
+        startActivity(intent);
     }
 
     private void retrieveData() {
