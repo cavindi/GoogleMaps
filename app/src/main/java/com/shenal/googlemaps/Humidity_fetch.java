@@ -53,6 +53,6 @@ public class Humidity_fetch extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Oxy_Data.oxydata.setText(this.dataParsed);
+        Humidity_Data.oxydata.setText(this.dataParsed);
     }
 }
