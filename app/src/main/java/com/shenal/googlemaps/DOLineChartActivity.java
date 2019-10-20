@@ -51,7 +51,7 @@ public class DOLineChartActivity extends AppCompatActivity {
                 if (dataSnapshot.hasChildren()) {
                     for (DataSnapshot myDataSnapshot : dataSnapshot.getChildren()) {
                         DODataPoint doDataPoint = myDataSnapshot.getValue(DODataPoint.class);
-                        dataVals.add(new Entry(doDataPoint.getDay(), doDataPoint.getDissolvedOxygen()));
+                        dataVals.add(new Entry(doDataPoint.getDay(), doDataPoint.getDissolvedoxygen()));
                     }
                     showChart(dataVals);
                 } else {

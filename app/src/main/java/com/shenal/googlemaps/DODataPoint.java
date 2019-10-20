@@ -2,11 +2,11 @@ package com.shenal.googlemaps;
 
 public class DODataPoint {
     int day;
-    int dissolvedOxygen;
+    int dissolvedoxygen;
 
-    public DODataPoint(int day, int dissolvedOxygen) {
+    public DODataPoint(int day, int dissolvedoxygen) {
         this.day = day;
-        this.dissolvedOxygen = dissolvedOxygen;
+        this.dissolvedoxygen = dissolvedoxygen;
     }
 
     public DODataPoint() {
@@ -20,11 +20,11 @@ public class DODataPoint {
         this.day = day;
     }
 
-    public int getDissolvedOxygen() {
-        return dissolvedOxygen;
+    public int getDissolvedoxygen() {
+        return dissolvedoxygen;
     }
 
-    public void setDissolvedOxygen(int dissolvedOxygen) {
-        this.dissolvedOxygen = dissolvedOxygen;
+    public void setDissolvedoxygen(int dissolvedoxygen) {
+        this.dissolvedoxygen = dissolvedoxygen;
     }
 }
