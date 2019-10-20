@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HumidityLineChartActivity"></activity>
+        <activity android:name=".Humidity_Data"></activity>
+        <activity android:name=".HumidityLineChartActivity" />
         <activity android:name=".DOLineChartActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -3,7 +3,10 @@ package com.shenal.googlemaps;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -27,7 +30,6 @@ public class TemperatureLineChart extends AppCompatActivity {
     LineDataSet lineDataSet = new LineDataSet(null, null);
     ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
     LineData lineData;
-    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,18 @@ public class TemperatureLineChart extends AppCompatActivity {
         setContentView(R.layout.activity_temperature_line_chart);
 
         lineChart = findViewById(R.id.line_chart);
-        spinner = findViewById(R.id.spinner);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("masterSheet");
 
         retrieveData();
+
+        Button btnList = findViewById(R.id.btnList);
+        btnList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goToList();
+            }
+        });
     }
 
     private void retrieveData() {
@@ -68,7 +76,7 @@ public class TemperatureLineChart extends AppCompatActivity {
 
     private void showChart(ArrayList<Entry> dataVals) {
         lineDataSet.setValues(dataVals);
-        lineDataSet.setLabel("Data Set 1");
+        lineDataSet.setLabel("Temperature");
         iLineDataSets.clear();
         iLineDataSets.add(lineDataSet);
         lineData = new LineData(iLineDataSets);
@@ -76,5 +84,10 @@ public class TemperatureLineChart extends AppCompatActivity {
         lineChart.setData(lineData);
         lineChart.invalidate();
 
+    }
+
+    private void goToList() {
+        Intent intent = new Intent(this, Temp_Data.class);
+        startActivity(intent);
     }
 }
