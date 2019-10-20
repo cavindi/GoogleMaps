@@ -17,14 +17,14 @@ public class Humidity_Data extends AppCompatActivity {
         oxydata = findViewById(R.id.data);
 
         pullToRefresh = findViewById(R.id.refresh);
-        Oxy_fetch process = new Oxy_fetch();
+        Humidity_fetch process = new Humidity_fetch();
         process.execute();
         pullToRefresh.setRefreshing(false);
 
         pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Oxy_fetch process = new Oxy_fetch();
+                Humidity_fetch process = new Humidity_fetch();
                 process.execute();
                 pullToRefresh.setRefreshing(false);
             }
