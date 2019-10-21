@@ -11,6 +11,7 @@ public class Temp_Data extends AppCompatActivity {
     public static TextView tempdata;
     public static SwipeRefreshLayout pullToRefresh;
 
+    //temperature
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
